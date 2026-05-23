@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Love ❤️</title>
+
+<style>
+body{
+ margin:0;
+ background:black;
+ overflow:hidden;
+ font-family:sans-serif;
+}
+
+/* 🔐 password */
+#lock{
+ position:absolute;
+ width:100%;
+ height:100%;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ flex-direction:column;
+ background:black;
+ color:white;
+ z-index:10;
+}
+
+input{padding:10px;font-size:20px;}
+button{padding:10px 20px;margin-top:10px;}
+
+/* ❤️ heart */
+#heart{
+ position:absolute;
+ top:50%;
+ left:50%;
+ transform:translate(-50%,-50%);
+ width:200px;
+ height:200px;
+ background:url("heart.png") no-repeat center/contain;
+ animation:beat 1s infinite;
+ display:none;
+}
+
+@keyframes beat{
+ 0%{transform:translate(-50%,-50%) scale(1);}
+ 25%{transform:translate(-50%,-50%) scale(1.2);}
+ 50%{transform:translate(-50%,-50%) scale(1);}
+ 75%{transform:translate(-50%,-50%) scale(1.15);}
+ 100%{transform:translate(-50%,-50%) scale(1);}
+}
+
+/* 💖 text */
+#text{
+ position:absolute;
+ top:20%;
+ width:100%;
+ text-align:center;
+ color:red;
+ font-size:35px;
+ display:none;
+ text-shadow:0 0 20px red;
+}
+
+/* 📸 slideshow */
+#photos{
+ position:absolute;
+ bottom:5%;
+ width:100%;
+ text-align:center;
+ display:none;
+}
+#photos img{
+ width:200px;
+ height:200px;
+ object-fit:cover;
+ border-radius:15px;
+ margin:10px;
+ box-shadow:0 0 20px red;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 -->
+<div id="lock">
+<h2>Enter Password 💖</h2>
+<input id="pass" type="password">
+<button onclick="unlock()">Enter</button>
+</div>
+
+<!-- ❤️ -->
+<div id="heart"></div>
+
+<!-- 💖 -->
+<div id="text">
+I love you ❤️<br>
+My love 💖<br>
+You are my heart forever 💓
+</div>
+
+<!-- 📸 -->
+<div id="photos">
+<img src="p1.jpg">
+<img src="p2.jpg">
+<img src="p3.jpg">
+</div>
+
+<!-- 🎵 -->
+<audio id="music" src="music.mp3" loop></audio>
+
+<script>
+function unlock(){
+ if(document.getElementById("pass").value==="2531"){
+  document.getElementById("lock").style.display="none";
+
+  document.getElementById("heart").style.display="block";
+  document.getElementById("text").style.display="block";
+
+  document.getElementById("music").play().catch(()=>{});
+
+  setTimeout(()=>{
+   document.getElementById("photos").style.display="block";
+  },3000);
+
+ }else{
+  alert("Wrong password ❌");
+ }
+}
+</script>
+
+</body>
+</html>
